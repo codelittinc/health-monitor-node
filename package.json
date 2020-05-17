@@ -1,0 +1,19 @@
+{
+  "name": "health-node",
+  "version": "0.0.1",
+  "description": "Health project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codelittinc/health-node.git"
+  },
+  "author": "kaio magalhaes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codelittinc/health-node/issues"
+  },
+  "homepage": "https://github.com/codelittinc/health-node#readme"
+}
