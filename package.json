@@ -1,19 +1,19 @@
 {
-  "name": "health-node",
+  "name": "health-monitor-node",
   "version": "0.0.1",
-  "description": "Health project",
+  "description": "Health monitor project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codelittinc/health-node.git"
+    "url": "git+https://github.com/codelittinc/health-monitor-node.git"
   },
   "author": "kaio magalhaes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codelittinc/health-node/issues"
+    "url": "https://github.com/codelittinc/health-monitor-node/issues"
   },
-  "homepage": "https://github.com/codelittinc/health-node#readme"
+  "homepage": "https://github.com/codelittinc/health-monitor-node#readme"
 }
