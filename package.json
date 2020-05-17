@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/codelittinc/health-monitor-node.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "kaio magalhaes",
   "license": "ISC",
   "bugs": {
