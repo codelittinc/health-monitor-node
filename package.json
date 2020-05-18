@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/codelittinc/health-monitor-node/issues"
   },
-  "homepage": "https://github.com/codelittinc/health-monitor-node#readme"
+  "homepage": "https://github.com/codelittinc/health-monitor-node#readme",
+  "dependencies": {
+    "graylog-loging": "^1.1.1"
+  }
 }
