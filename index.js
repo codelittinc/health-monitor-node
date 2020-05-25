@@ -1,11 +1,15 @@
 const graylog = require('graylog-loging');
 
-module.exports = (expressApp, customVerifier) => {
+module.exports = (expressApp, applicationName, customVerifier) => {
+  if (!applicationName || applicationName == '' || typeof applicationName != 'string') {
+    throw new Error('Please pass the application name to the health monitor.')
+  }
+
   const { NODE_ENV } = process.env;
   const isProd = NODE_ENV == 'production';
 
   if (isProd) {
-    console.log(`Health monitor up!`)
+    console.log(`Health monitor up for the project ${applicationName}!`)
   } else {
     console.log(`Health monitor not running, if you want to run it set NODE_ENV=production`)
   }
@@ -13,7 +17,7 @@ module.exports = (expressApp, customVerifier) => {
   const configuration = {
     graylogPort: 12201,
     graylogHostname: 'logs.codelitt.dev',
-    applicationName: 'Roadrunner'
+    applicationName: applicationName
   };
 
   graylog.init(configuration);
