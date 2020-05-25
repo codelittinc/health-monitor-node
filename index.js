@@ -3,7 +3,7 @@ const graylog = require('graylog-loging');
 module.exports = (expressApp, customVerifier) => {
   graylog.init({
     graylogPort: 12201,
-    graylogHostname: '64.227.27.179'
+    graylogHostname: 'logs.codelitt.dev'
   });
 
   const defaultVerifier = (_, res) => {
