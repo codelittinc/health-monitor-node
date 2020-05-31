@@ -1,6 +1,6 @@
 {
   "name": "@codelittinc/health-monitor-node",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Health monitor node project",
   "main": "index.js",
   "scripts": {

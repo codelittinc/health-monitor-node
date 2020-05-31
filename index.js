@@ -1,23 +1,27 @@
 const graylog = require('graylog-loging');
 
-module.exports = (expressApp, applicationName, customVerifier) => {
-  if (!applicationName || applicationName == '' || typeof applicationName != 'string') {
-    throw new Error('Please pass the application name to the health monitor.')
-  }
-
-  const { NODE_ENV } = process.env;
+module.exports = (app, customVerifier) => {
+  const { NODE_ENV, LOG_ENV, LOG_HOST  } = process.env;
   const isProd = NODE_ENV == 'production';
 
+  if (isProd && (!LOG_ENV || !LOG_HOST)) {
+    console.log('\x1b[31m%s\x1b[0m', 'Please set your LOG_ENV and LOG_HOST to start the health check system.')
+    console.log('\x1b[31m%s\x1b[0m',`Your current LOG_ENV is ${LOG_ENV}`)
+    console.log('\x1b[31m%s\x1b[0m',`Your current LOG_HOST is ${LOG_HOST}`)
+    return;
+  }
+
   if (isProd) {
-    console.log(`Health monitor up for the project ${applicationName}!`)
+    console.log('\x1b[32m%s\x1b[0m', 'Health monitor up!')
   } else {
-    console.log(`Health monitor not running, if you want to run it set NODE_ENV=production`)
+    console.log('Health monitor not running, if you want to run it set NODE_ENV=production')
   }
 
   const configuration = {
     graylogPort: 12201,
     graylogHostname: 'logs.codelitt.dev',
-    applicationName: applicationName
+    applicationName: LOG_HOST,
+    environment: LOG_ENV
   };
 
   graylog.init(configuration);
@@ -28,7 +32,7 @@ module.exports = (expressApp, applicationName, customVerifier) => {
 
   const verifier = customVerifier || defaultVerifier;
 
-  expressApp.use(graylog.logRequest);
-  expressApp.get('/health', verifier)
-  expressApp.use(graylog.handleErrors);
+  app.use(graylog.logRequest);
+  app.get('/health', verifier)
+  app.use(graylog.handleErrors);
 }
