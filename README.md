@@ -1,9 +1,16 @@
 
 Set the environment variables for your project:
 
+setup your environment
+```
 LOG_ENV=dev|qa|prod
+```
 
+setup your host
+
+```
 LOG_HOST=<YOUR HOST URL>
+```
 
 ```
 import withHealthMonitor from '@codelittinc/health-monitor-node'
