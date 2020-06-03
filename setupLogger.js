@@ -49,5 +49,4 @@ module.exports = (app, log_host, log_env) => {
   // Setup graylog-loging - app requests
   graylog.init(graylogsConfig);
   app.use(graylog.logRequest);
-  app.use(graylog.handleErrors);
 }
