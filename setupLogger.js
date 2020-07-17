@@ -3,7 +3,6 @@ const graylog = require('graylog-loging');
 
 const GRAYLOGS_SERVER = 'logs.codelitt.dev';
 
-
 const getGraylogsConfig = (log_host, log_env) => ({
   graylogPort: 12201,
   graylogHostname: GRAYLOGS_SERVER,
@@ -14,7 +13,7 @@ const getGraylogsConfig = (log_host, log_env) => ({
   applicationName: log_host,
 });
 
-module.exports = (app, log_host, log_env) => {
+module.exports = (app, log_host, log_env, track_info) => {
   // stderr logging hook
   const graylogsConfig = getGraylogsConfig(log_host, log_env);
   const gelf = new Gelf(graylogsConfig)
@@ -48,5 +47,7 @@ module.exports = (app, log_host, log_env) => {
 
   // Setup graylog-loging - app requests
   graylog.init(graylogsConfig);
-  app.use(graylog.logRequest);
+  if (track_info == 'true') {
+    app.use(graylog.logRequest);
+  }
 }
