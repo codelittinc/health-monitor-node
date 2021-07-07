@@ -21,5 +21,8 @@
   "dependencies": {
     "gelf": "^2.0.1",
     "graylog-loging": "^1.1.1"
+  },
+  "devDependencies": {
+    "release-it": "^14.10.0"
   }
 }
