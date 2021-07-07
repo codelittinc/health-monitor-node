@@ -1,0 +1,36 @@
+name: Library release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: authenticate npm
+      run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.PACKAGING_TOKEN }}
+
+    - run: git config --global user.name ${{ secrets.RELEASE_USERNAME }}
+    - run: git config --global user.email ${{ secrets.RELEASE_EMAIL }}
+
+    - name: installing npm
+      run: npm install
+
+    - name: lint
+      run: npm run lint
+
+    - name: test
+      run: npm test
+
+    - name: build
+      run: npm run build-package
+
+    - name: clear env
+      run: git reset --hard
+
+    - name: release
+      run: npm run release
