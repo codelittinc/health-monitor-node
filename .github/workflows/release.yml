@@ -20,9 +20,6 @@ jobs:
     - name: installing npm
       run: npm install
 
-    - name: build
-      run: npm run build-package
-
     - name: clear env
       run: git reset --hard
 
