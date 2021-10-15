@@ -3,6 +3,9 @@ const setupLogger = require('./setupLogger.js');
 
 module.exports = (app, customVerifier) => {
   const { NODE_ENV, LOG_ENV, LOG_HOST, LOG_TRACK_INFO } = process.env;
+  const isDev = NODE_ENV == 'dev';
+  if (isDev) return;
+
   const isProd = NODE_ENV == 'production';
 
   if (isProd && (!LOG_ENV || !LOG_HOST)) {
