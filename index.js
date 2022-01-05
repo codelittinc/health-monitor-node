@@ -16,11 +16,12 @@ module.exports = (app, customVerifier) => {
   }
 
   if (isProd) {
+    setupLogger(app, LOG_HOST, LOG_ENV, LOG_TRACK_INFO)
+    setupHealthMonitor(app, customVerifier)
+
     console.log('\x1b[32m%s\x1b[0m', 'Health monitor up!')
   } else {
     console.log('Health monitor not running, if you want to run it set NODE_ENV=production')
   }
 
-  setupLogger(app, LOG_HOST, LOG_ENV, LOG_TRACK_INFO)
-  setupHealthMonitor(app, customVerifier)
 }
