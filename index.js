@@ -6,7 +6,7 @@ module.exports = (app, customVerifier) => {
   const isDev = NODE_ENV == 'dev';
   if (isDev) return;
 
-  const isProd = NODE_ENV == 'production' && LOG_HOST == 'production';
+  const isProd = NODE_ENV == 'production' && (LOG_HOST == 'prod' || LOG_HOST == 'qa');
 
   if (isProd && (!LOG_ENV || !LOG_HOST)) {
     console.log('\x1b[31m%s\x1b[0m', 'Please set your LOG_ENV and LOG_HOST to start the health check system.')
