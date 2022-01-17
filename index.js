@@ -6,7 +6,7 @@ module.exports = (app, customVerifier) => {
   const isDev = NODE_ENV == 'dev';
   if (isDev) return;
 
-  const isProd = NODE_ENV == 'production';
+  const isProd = NODE_ENV == 'production' && LOG_HOST == 'production';
 
   if (isProd && (!LOG_ENV || !LOG_HOST)) {
     console.log('\x1b[31m%s\x1b[0m', 'Please set your LOG_ENV and LOG_HOST to start the health check system.')
@@ -21,7 +21,6 @@ module.exports = (app, customVerifier) => {
 
     console.log('\x1b[32m%s\x1b[0m', 'Health monitor up!')
   } else {
-    console.log('Health monitor not running, if you want to run it set NODE_ENV=production')
+    console.log('Health monitor not running, if you want to run it set NODE_ENV=production and LOG_HOST=production')
   }
-
 }
